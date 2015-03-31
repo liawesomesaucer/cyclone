@@ -27,7 +27,7 @@ class User(Base):
 	location = 		Column(Float())
 
 	def __init__ (self, name, email, password, description=None,
-		profile_pic=None, interests=None, classes, yesUsers=None, noUsers=None, 
+		profile_pic=None, interests=None, classes=None, yesUsers=None, noUsers=None, 
 		rating=0, rating_times=0, location=0):
 
 		self.name = 		name
