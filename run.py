@@ -4,7 +4,6 @@ import tornado.ioloop
 import tornado.web
 import application
 
-
 def main():
 	# start the web app
 
