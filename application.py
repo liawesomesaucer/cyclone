@@ -86,6 +86,7 @@ class CreateUserHandler(BaseHandler):
 			interests = self.get_argument('interests', '')
 			classes = self.get_argument('classes', '')
 
+			print("fdsafdjaskldf;jasfkldsjfkladsjkl")
 			print(name, email, password, description, profile_pic,
 				interests, classes)	#debug
 			new_user = User (name, email, password, description,  
