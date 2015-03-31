@@ -86,6 +86,8 @@ class CreateUserHandler(BaseHandler):
 			interests = self.get_argument('interests', '')
 			classes = self.get_argument('classes', '')
 
+			print(name, email, password, description, profile_pic,
+				interests, classes)	#debug
 			new_user = User (name, email, password, description,  
 				profile_pic, interests, classes)
 
@@ -97,8 +99,8 @@ class CreateUserHandler(BaseHandler):
 
 		except:
 			print("create_user failed")
-			self.write("-1")
 			raise
+			self.write("-1")
 
 class Application(tornado.web.Application):
 	def __init__(self):
