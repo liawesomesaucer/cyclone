@@ -89,6 +89,12 @@ class CreateUserHandler(BaseHandler):
 
 			print("fdsafdjaskldf;jasfkldsjfkladsjkl")
 			print(name, email, password)	#debug
+
+			if not name or not email or not password:
+				print("name, email, or password is null")
+				self.write("0")
+				return
+
 			new_user = User (name, email, password)
 
 			# add this guy to session
