@@ -95,7 +95,7 @@ class CreateUserHandler(BaseHandler):
 
 		except:
 			print("create_user failed")
-			self.write(-1)
+			self.write("-1")
 			raise
 
 class Application(tornado.web.Application):
