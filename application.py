@@ -87,11 +87,13 @@ class CreateUserHandler(BaseHandler):
 			classes = self.get_argument('classes', '')
 
 			new_user = User (name, email, password, description,  
-				profile_pic, interest, classes)
+				profile_pic, interests, classes)
 
 			# add this guy to session
 			session.add(new_user)
 			session.commit()
+
+			print(new_user)
 
 		except:
 			print("create_user failed")
