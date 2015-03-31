@@ -81,16 +81,15 @@ class CreateUserHandler(BaseHandler):
 			name = self.get_argument('name', '')
 			email = self.get_argument('email', '')
 			password = self.get_argument('password', '')
-			description = self.get_argument('description', '')
-			profile_pic = self.get_argument('profile_pic', '')
-			interests = self.get_argument('interests', '')
-			classes = self.get_argument('classes', '')
+
+			# description = self.get_argument('description', '')
+			# profile_pic = self.get_argument('profile_pic', '')
+			# interests = self.get_argument('interests', '')
+			# classes = self.get_argument('classes', '')
 
 			print("fdsafdjaskldf;jasfkldsjfkladsjkl")
-			print(name, email, password, description, profile_pic,
-				interests, classes)	#debug
-			new_user = User (name, email, password, description,  
-				profile_pic, interests, classes)
+			print(name, email, password)	#debug
+			new_user = User (name, email, password)
 
 			# add this guy to session
 			session.add(new_user)

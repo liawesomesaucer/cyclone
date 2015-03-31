@@ -26,8 +26,8 @@ class User(Base):
 	rating_times = 	Column(Integer)
 	location = 		Column(Float())
 
-	def __init__ (self, name, email, password, description,
-		profile_pic, interests, classes, yesUsers=None, noUsers=None, 
+	def __init__ (self, name, email, password, description=None,
+		profile_pic=None, interests=None, classes, yesUsers=None, noUsers=None, 
 		rating=0, rating_times=0, location=0):
 
 		self.name = 		name
