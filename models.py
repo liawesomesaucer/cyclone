@@ -5,8 +5,6 @@ from sqlalchemy import Column, Integer, String, Float
 from utils import *
 import utils
 
-DB_URL = 'postgres://svzgijjedzoxgo:lqiOequvQPlltINbMVmdLKKf1e@ec2-54-163-235-165.compute-1.amazonaws.com:5432/dct7rhlbci5ha1'
-engine = create_engine(DB_URL)
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -46,10 +44,3 @@ class User(Base):
 
 	def __repr__(self):
 		return "<User %s>" % self.email
-
-users_table = User.__table__
-metadata = Base.metadata
-
-def create_all():
-	metadata.create_all(engine)
-# also need to add comparison functionality

@@ -56,6 +56,7 @@ class TestHandler(BaseHandler):		# (self, test) test returns testname
 		except:
 			print("Test failed")
 			raise
+
 class LoginTestHandler(BaseHandler):	# takes login stuff (needs change)
 	def get(self, email, password):
 		try:
@@ -89,15 +90,13 @@ class CreateUserHandler(BaseHandler):
 				profile_pic, interest, classes)
 
 			# add this guy to session
-			# session.add(new_user)
-			# then commit
-			# session.commit()
+			session.add(new_user)
+			session.commit()
 
 		except:
 			print("create_user failed")
 			self.write(-1)
 			raise
-
 
 class Application(tornado.web.Application):
 	def __init__(self):
