@@ -78,19 +78,17 @@ class LoginOnlyHandler(BaseHandler):	# redirects if not logged in
 class CreateUserHandler(BaseHandler):
 	def post(self):
 		try:
-			# not using 2 params: "if default is not provided, the 
-			# argument is considered required, throw HTTP400  if missing"
-			name = self.get_argument('name')
-			email = self.get_argument('email')
-			password = self.get_argument('password')
+			name = self.get_argument('name', '')
+			email = self.get_argument('email', '')
+			password = self.get_argument('password', '')
 
-			print("fdsafdjaskldf;jasfkldsjfkladsjkl")
+			print("[NAME, EMAIL, and PASSWORD below]")
 			print(name, email, password)	#debug
 
-			if not name or not email or not password:
-				print("name, email, or password is null")
-				self.write("0")
-				return
+			# if not name or not email or not password:
+			# 	print("name, email, or password is null")
+			# 	self.write("0")
+			# 	return
 
 			new_user = User (name, email, password)
 
