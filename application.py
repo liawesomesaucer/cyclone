@@ -68,6 +68,17 @@ class TestHandler(BaseHandler):		# (self, test) test returns testname
 			print("Test failed")
 			raise
 
+class JsonHandler(BaseHandler):
+
+	def post(self):
+		try:
+			data = tornado.escape.json_decode(self.request.body)
+			self.write(data)
+		except:
+			print("json test failed")
+			raise
+			self.write("fail")
+
 class LoginTestHandler(BaseHandler):	# takes login stuff (needs change)
 	def get(self, email, password):
 		try:
@@ -125,7 +136,8 @@ class Application(tornado.web.Application):
 			(r"/test/([^/]+)", 	TestHandler),
 			(r"/login", 		LoginTestHandler),
 			(r"/loggedin",		LoginOnlyHandler),
-			(r"/create_user",	CreateUserHandler)
+			(r"/create_user",	CreateUserHandler),
+			(r"/json_test",		JsonHandler)
 		]
 
 		#self.db = scoped_session(sessionmaker(bind=engine))
