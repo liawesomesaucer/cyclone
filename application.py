@@ -73,8 +73,9 @@ class JsonHandler(BaseHandler):
 	def post(self):
 		try:
 			data = tornado.escape.json_decode(self.request.body)
-			self.write(data)
-			self.write(data["stuff"])
+			# self.write(data)
+			# self.write(data["stuff"])
+			self.write(self.request.body)
 		except:
 			print("json test failed")
 			raise
