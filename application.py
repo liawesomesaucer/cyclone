@@ -23,6 +23,9 @@ testUser = {
 	"location" : "temporaryvariable"
 }	# test user for json
 
+print("current engine is %s" % engine)
+print("current session is %s" % session)
+
 class BaseHandler(tornado.web.RequestHandler):
 	def set_default_headers(self):
 		def db(self):
@@ -47,6 +50,14 @@ class HelloHandler(BaseHandler):
 		except:
 			print("Hello failed")
 			raise
+	def post(self):
+		try:
+			self.get_argument('stuff', '')
+			self.write("you sent me: " + stuff)
+		except:
+			raise
+			self.write("something horrible happened")
+
 class TestHandler(BaseHandler):		# (self, test) test returns testname
 
 	def get(self, test):
@@ -76,6 +87,8 @@ class LoginOnlyHandler(BaseHandler):	# redirects if not logged in
 
 # User Creation - post to db
 class CreateUserHandler(BaseHandler):
+	
+
 	def post(self):
 		try:
 			name = self.get_argument('name', '')
@@ -85,10 +98,10 @@ class CreateUserHandler(BaseHandler):
 			print("[NAME, EMAIL, and PASSWORD below]")
 			print(name, email, password)	#debug
 
-			# if not name or not email or not password:
-			# 	print("name, email, or password is null")
-			# 	self.write("0")
-			# 	return
+			if not name or not email or not password:
+				print("name, email, or password is null")
+				self.write("0")
+				return
 
 			new_user = User (name, email, password)
 
@@ -96,7 +109,7 @@ class CreateUserHandler(BaseHandler):
 			session.add(new_user)
 			session.commit()
 
-			print(new_user)
+			print("just added: %s" % new_user)
 			self.write("1")
 
 		except:
