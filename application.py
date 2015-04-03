@@ -74,6 +74,7 @@ class JsonHandler(BaseHandler):
 		try:
 			data = tornado.escape.json_decode(self.request.body)
 			self.write(data)
+			self.write(data["stuff"])
 		except:
 			print("json test failed")
 			raise
