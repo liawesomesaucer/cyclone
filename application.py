@@ -52,7 +52,7 @@ class HelloHandler(BaseHandler):
 			raise
 	def post(self):
 		try:
-			self.get_argument('stuff', '')
+			stuff = self.get_argument('stuff', '')
 			self.write("you sent me: " + stuff)
 		except:
 			raise
