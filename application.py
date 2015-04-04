@@ -132,6 +132,31 @@ class CreateUserHandler(BaseHandler):
 			raise
 			self.write("-1")
 
+class LoginUserHandler(BaseHandler):
+
+	def post(self):
+
+		try:
+			data = tornado.escape.json_decode(self.request.body)
+			email, password = data["email"], data["password"]
+
+			if not name or not password:
+				self.write("0")
+				return
+
+			if session.query(User).filter_by(name=email).filter_by(password=password):
+				self.write("1")
+				print("Logging in %s" % email)
+				return
+			else:
+				self.write("0")
+				return
+
+		except:
+			print("login_user failed")
+			raise
+			self.write("-1")
+
 class Application(tornado.web.Application):
 	def __init__(self):
 		
@@ -141,6 +166,7 @@ class Application(tornado.web.Application):
 			(r"/login", 		LoginTestHandler),
 			(r"/loggedin",		LoginOnlyHandler),
 			(r"/create_user",	CreateUserHandler),
+			(r"/login_user",	LoginUserHandler),
 			(r"/json_test",		JsonHandler)
 		]
 
