@@ -1,0 +1,153 @@
+html, body, div, p{
+	margin:0;
+	padding:0;
+}
+
+body {
+	margin-top:-20px;
+}
+h1, h2, h3, h4, p{
+	font:64px/64px Raleway, Roboto, "Liberation Sans", Segoe UI Light, Helvetica;
+	/*color:white;*/
+}
+p {
+	font-size:20px;
+	width:290px;
+	position:relative;
+	float:left;
+	text-align:center;
+}
+h2 {
+	font-size:24px;
+	line-height:1.4;
+	font-height:24px;
+	margin:0;
+}
+h4 {
+	font-size:32px;
+	line-height:30px;
+	/*display:block;*/
+	position:relative;
+	/*background-color:beige;*/
+}
+h3 {
+	text-align:center;
+	font-size:32px;
+}
+a {
+	color:none;
+	text-decoration:none;
+}
+.white {
+	color:white;
+}
+.button {
+	font-size:22px;
+	border:1px solid;
+	border-color:white;
+	width:300px;
+	margin:12px;
+	padding:10px;
+	text-align:center;
+	-moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+.content {
+	height:500px;
+	height:100vh;
+
+	padding-top:20px;
+	/*padding:100px;*/
+	padding-bottom:0;
+
+	padding-left:10%;
+	padding-right:10%;
+
+}
+.box-wrapper {
+	width:315px;
+	height:800px;
+	float:center;
+	display:inline-block;
+}
+.box1 {
+background: url(piano_bw.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.box2 {
+background: url(clock_bw.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.box3 {
+	background: url(sunset_bw.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.box {
+	height:270px;
+	width:290px;
+	background-color:#e6e6e6;
+	/*margin:100px;*/
+	position:relative;
+	overflow:hidden;
+
+	transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+.box:hover {
+	-webkit-transform:translate3d(0, -10%, 0);
+	transform:translate3d(0, -10%, 0);
+}
+#navigation {
+	z-index: 100;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 50px;
+	text-align: left;
+	padding-top: 10px;
+	padding-bottom: 15px;
+	/* Adds shadow to the bottom of the bar */
+	-webkit-box-shadow: 0px 0px 8px 0px #000000;
+	-moz-box-shadow: 0px 0px 8px 0px #000000;
+	box-shadow: 0px 0px 8px 0px #000000;
+	 /*Adds the transparent background */
+	/*background-color: #FFFFFF*/
+}
+
+#navigation a:link {
+	font: 24px/20px Segoe UI Light, Segoe UI, Arial, "Times New Roman", serif;
+	color: white;
+	list-style-type:none;
+	text-align: left;
+	text-decoration: none;
+	
+	padding-left: 9%;
+	padding-right: 9%;
+}
+#navigation a:visited {
+	color:white;
+}
+
+#big {
+	font-size:28px;
+}
+
+.footer {
+	background-color: #e6e6e6;
+	width:100%;
+	height:50px;
+}

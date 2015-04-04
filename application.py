@@ -37,8 +37,7 @@ class BaseHandler(tornado.web.RequestHandler):
 			if not user_id: 
 				return None
 			return self.db.query(User).get(user_id)
-
-
+			
 		self.set_header("Access-Control-Allow-Origin", 
 			"http://liawesomesaucer.github.io")
 
