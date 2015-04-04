@@ -151,7 +151,7 @@ class LoginUserHandler(BaseHandler):
 				self.write("0")
 				return
 
-			this_user = session.query(User).filter_by(name=email).filter_by(password=password).first()
+			this_user = session.query(User).filter_by(email=email).filter_by(password=password).first()
 			if this_user:
 				this_user.longitude, this_user.latitude = longitude, latitude
 				self.write(this_user.jsonify())
