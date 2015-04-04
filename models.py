@@ -1,7 +1,7 @@
 LARGE_COLUMN_SIZE = 5000
 
 from sqlalchemy import create_engine
-from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy import Column, Integer, String, Float, Boolean
 from utils import *
 import utils
 
@@ -45,7 +45,7 @@ Base = declarative_base()
 # 	def __repr__(self):
 # 		return "<User %s>" % self.email
 
-		
+
 class User( Base ):
 	__tablename__ = 'users'
 
