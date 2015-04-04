@@ -100,13 +100,15 @@ class LoginOnlyHandler(BaseHandler):	# redirects if not logged in
 
 # User Creation - post to db
 class CreateUserHandler(BaseHandler):
-	
 
 	def post(self):
 		try:
-			name = self.get_argument('name', '')
-			email = self.get_argument('email', '')
-			password = self.get_argument('password', '')
+			
+			data = tornado.escape.json_decode(self.request.body)
+
+			email = data["email"]
+			password = data["password"]
+			name = data["name"]
 
 			print("[NAME, EMAIL, and PASSWORD below]")
 			print(name, email, password)	#debug
@@ -116,7 +118,7 @@ class CreateUserHandler(BaseHandler):
 				self.write("0")
 				return
 
-			new_user = User (name, email, password)
+			new_user = User (email, password, name)
 
 			# add this guy to session
 			session.add(new_user)
