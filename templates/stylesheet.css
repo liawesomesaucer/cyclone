@@ -8,7 +8,7 @@ body {
 }
 h1, h2, h3, h4, p{
 	font:64px/64px Raleway, Roboto, "Liberation Sans", Segoe UI Light, Helvetica;
-	/*color:white;*/
+	color:#666666;
 }
 p {
 	font-size:20px;
@@ -46,11 +46,26 @@ a {
 	border:1px solid;
 	border-color:white;
 	width:300px;
+	margin:6px;
+	padding:10px;
+	text-align:center;
+	-moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+.switchbutton  {
+	font-size:22px;
+	width:300px;
 	margin:12px;
 	padding:10px;
 	text-align:center;
 	-moz-border-radius: 5px;
   -webkit-border-radius: 5px;
+	border:1px solid;border-color:#666666;display:inline;
+}
+.switchbutton:hover {
+	background-color:#999999 !important;
+	color:white !important;
+	border-color:#999999 !important;
 }
 .content {
 	height:500px;

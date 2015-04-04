@@ -77,6 +77,15 @@ class User(Base):
 
 		return (obj)
 
+	def distance( self, other ):
+
+		if not other.longitude and not other.latitude:
+			raise
+
+		return sqrt( ( self.longitude + other.longitude ) ^ 2 + ( self.latitude + other.latitude ) ^ 2)
+
+		# Distance formula = sqrt((x1-x2)^2 + (y1-y2)^2)
+
 class TutoringSession(Base):
 	__tablename__ = 'tutoring_sessions'
 

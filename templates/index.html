@@ -32,30 +32,35 @@
 			</div>
 		</div>
 
-		<div class="content">
+		<div class="content user">
 			<br>
-			<h3>Learn what you want, when you want it, and where you need it</h3>
+			<h3 id="what">Learn what you want, when you want it, and where you need it</h3>
 
-			<div class="box-wrapper" style="margin-left:50px">
-				<h4>What</h4>
+			<div style="width:100%;margin:auto; text-align:center">
+				<a href="javascript:learners()"><h3 class="switchbutton learners" style="background-color:#666666; color:white; border-color:#666666;">Learners</h3></a>
+				<a href="javascript:tutors()"><h3 class="switchbutton tutors">Tutors</h3>
+			</div>
+
+			<div class="box-wrapper wrap1" style="margin-left:50px">
+				<h4 id="box1">What</h4>
 				<div class="box box1">
 				</div>
 
-				<p>Dozens of subjects to choose from</p>
+				<p id="desc1">Dozens of subjects to choose from</p>
 			</div>
-			<div class="box-wrapper">
-				<h4>When</h4>
+			<div class="box-wrapper wrap2">
+				<h4 id="box2">When</h4>
 				<div class="box box2">
 				</div>
 
-				<p>Request a tutor, on demand</p>
+				<p id="desc2">Request a tutor, on demand</p>
 			</div>
-			<div class="box-wrapper">
-				<h4>Where</h4>
+			<div class="box-wrapper wrap3">
+				<h4 id="box3">Where</h4>
 				<div class="box box3">
 				</div>
 
-				<p>Always find tutors close by</p>
+				<p id="desc3">Always find tutors close by</p>
 			</div>
 
 			<h3>Join Tute Today</h3>
@@ -74,12 +79,72 @@
 </body>
 
 <script>
-var time = 5000;
+var time = 0;
 var img1 = "piano_bw.jpg";
 var img2 = "driving_bw.jpg";
 var img3 = "sunset_bw.jpg"
-	$( ".background" ).css( {"background":"url(piano_bw.jpg)",
+
+// changes the image
+function change_image(img) {
+
+	$( ".background" ).css( {"background":"url("+img+")",
 	"-webkit-background-size": "cover",
   	"-moz-background-size": "cover",
  	"-o-background-size": "cover",});
+}
+
+change_image(img1).setTimeout(
+change_image(img2), 1000);
+change_image(img3)
+
+function tutors() {
+	// first change buttons
+	$( ".tutors" ).css( {
+		"background-color":"#666666", 
+		"color":"white", 
+		"border-color":"#666666" 
+	});
+	$( ".learners" ).css( {
+		"background-color":"white",
+		"color":"#666666",
+	});
+
+	// then change message
+
+	$( "#what" ).html( "Earn money enlightening others in your free time");
+
+	// then change 3 things
+	$( "#box1" ).html( "Earn $$" );
+	$( "#box2" ).html( "Whenever" );
+	$( "#box3" ).html( "Always Nearby" );
+
+	$( "#desc1" ).html( "Dozens of skills demanded" );
+	$( "#desc2" ).html( "Choose when you're available" );
+	$( "#desc3" ).html( "Never need to go too far" );
+}
+function learners() {
+
+	// first change buttons
+	$( ".learners" ).css( {
+		"background-color":"#666666", 
+		"color":"white", 
+		"border-color":"#666666" 
+	});
+	$( ".tutors" ).css( {
+		"background-color":"white",
+		"color":"#666666",
+	});
+
+	// then change message
+	$( "#what" ).html("Learn what you want, when you want it, and where you need it");
+
+	// then change 3 things
+	$( "#box1" ).html( "What" );
+	$( "#box2" ).html( "When" );
+	$( "#box3" ).html( "Where" );
+
+	$( "#desc1" ).html( "Dozens of subjects to choose from" );
+	$( "#desc2" ).html( "Request a tutor, on demand" );
+	$( "#desc3" ).html( "Always find tutors close by" );
+}
 </script>

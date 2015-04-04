@@ -97,6 +97,19 @@ class LoginOnlyHandler(BaseHandler):	# redirects if not logged in
 			print("failed")
 			raise
 
+# class DistanceHandler(BaseHandler):
+
+# 	def post(self):
+# 		try:
+# 			data = tornado.escape.json_decode(self.request.body)
+
+# 			self_email = data["self_email"]
+# 			self_longitude = data["self_longitude"]
+
+# 			other_email = data["other_email"]
+
+# 			if not self_email or not other_email:
+
 # User Creation - post to db
 class CreateUserHandler(BaseHandler):
 
@@ -165,6 +178,31 @@ class LoginUserHandler(BaseHandler):
 			raise
 			self.write("-1")
 
+
+class AllUserHandler(BaseHandler):
+
+	def post(self):
+		try:
+			data = tornado.escape.json_decode(self.request.body)
+			email = data["email"]
+			current_user = session.query(User).filter_by(email=email).first()
+			users = session.query(User).all()
+
+			final_users = []	# users to send
+			for user in users:
+				if user is not current_user:
+					distance = current_user.distance(user)
+
+					if distance < 0.1:	# 7 mile radius
+						final_users.append(user.jsonify())
+
+			self.write(final_users)
+
+		except:
+			print("all user query failed")
+			raise
+			self.write("-1")
+
 class Application(tornado.web.Application):
 	def __init__(self):
 		
@@ -175,7 +213,8 @@ class Application(tornado.web.Application):
 			(r"/loggedin",		LoginOnlyHandler),
 			(r"/create_user",	CreateUserHandler),
 			(r"/login_user",	LoginUserHandler),
-			(r"/json_test",		JsonHandler)
+			(r"/json_test",		JsonHandler),
+			(r"/all_users",		AllUserHandler)
 		]
 
 		#self.db = scoped_session(sessionmaker(bind=engine))
