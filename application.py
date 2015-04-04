@@ -139,13 +139,16 @@ class LoginUserHandler(BaseHandler):
 		try:
 			data = tornado.escape.json_decode(self.request.body)
 			email, password = data["email"], data["password"]
+			longitude, latitude = data["longitude"], data["latitude"]
 
 			if not email or not password:
 				self.write("0")
 				return
 
-			if session.query(User).filter_by(name=email).filter_by(password=password):
-				self.write("1")
+			this_user = session.query(User).filter_by(name=email).filter_by(password=password)
+			if this_user:
+				this_user.longitude, this_user.latitude = longitude, latitude
+				self.write(this_user.jsonify())
 				print("Logging in %s" % email)
 				return
 			else:

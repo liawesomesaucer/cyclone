@@ -12,12 +12,16 @@ Base = declarative_base()
 class User(Base):
 	__tablename__ = 'users'
 
-	# Total of 11 fields
+	# Total of 12 fields
 
 	# Default, important user fields
 	email = Column(String(100), primary_key=True)
 	name = Column(String(50))
 	password = Column(String(100))
+
+	# Location based services
+	longitude = Column(Float())
+	latitude = Column(Float())
 
 	# Personal info fields
 	bio = Column(String(200))	# Also where tutors store credentials
@@ -30,16 +34,16 @@ class User(Base):
 	tutor_fields = Column(String(5000))
 	tutor_price = Column(Float())	# Tutor's desired price per hour
 
-	# Optional fields
-	location = Column(String(20))	# Location, not sure if necessary
 
-	def __init__ (	self, email, password, name, bio=None, image=None, tutor=False,
+	def __init__ (	self, email, password, name, longitude=0.0, latitude=0.0, bio=None, image=None, tutor=False,
 					tutor_availability=False, tutor_rating=0.0, tutor_fields="",
-					tutor_price=0.0, location="" ):
+					tutor_price=0.0 ):
 
 		self.email = email
 		self.password = password
 		self.name = name
+		self.longitude = longitude
+		self.latitude = latitude
 		self.bio = bio
 		self.image = image
 		self.tutor = tutor
@@ -47,13 +51,31 @@ class User(Base):
 		self.tutor_rating = tutor_rating
 		self.tutor_fields = tutor_fields
 		self.tutor_price = tutor_price
-		self.location = location
 
 	def __repr__ ( self ):
 
 		if self.tutor:			
 			return "<Tutor %s>" % self.name
 		return "<User %s>" % self.name
+
+	def jsonify( self ):	# Converts to JSON
+
+		obj = {
+			"email" : self.email,
+			"password" : self.password,
+			"name": self.name,
+			"longitude": self.longitude,
+			"latitude": self.latitude,
+			"bio": self.bio,
+			"image": self.image,
+			"tutor": self.tutor,
+			"tutor_availability": self.tutor_availability,
+			"tutor_rating": self.tutor_rating,
+			"tutor_fields": self.tutor_fields,
+			"tutor_price": self.tutor_price
+		}
+
+		return (obj)
 
 class TutoringSession(Base):
 	__tablename__ = 'tutoring_sessions'
