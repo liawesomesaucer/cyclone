@@ -6,3 +6,6 @@ engine = create_engine(DB_URL)
 
 Session = sessionmaker(bind=engine)
 session = Session()
+
+meta = MetaData()
+meta.create_all(engine)

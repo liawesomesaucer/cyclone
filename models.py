@@ -46,7 +46,7 @@ Base = declarative_base()
 # 		return "<User %s>" % self.email
 
 
-class User( Base ):
+class User(Base):
 	__tablename__ = 'users'
 
 	# Total of 11 fields
@@ -90,3 +90,4 @@ class User( Base ):
 		if self.tutor:			
 			return "<Tutor %s>" % name
 		return "<User %s>" % name
+
