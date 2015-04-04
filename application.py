@@ -117,8 +117,14 @@ class CreateUserHandler(BaseHandler):
 				print("name, email, or password is null")
 				self.write("0")
 				return
+		
+			if data["longitude"] && data["latitude"]:
+				longitude = data["longitude"]
+				latitude = data["latitude"]
+				new_user = User (email, password, name, latitude, longitude)
 
-			new_user = User (email, password, name)
+			else:
+				new_user = User (email, password, name)
 
 			# add this guy to session
 			session.add(new_user)
@@ -145,7 +151,7 @@ class LoginUserHandler(BaseHandler):
 				self.write("0")
 				return
 
-			this_user = session.query(User).filter_by(name=email).filter_by(password=password)
+			this_user = session.query(User).filter_by(name=email).filter_by(password=password).first()
 			if this_user:
 				this_user.longitude, this_user.latitude = longitude, latitude
 				self.write(this_user.jsonify())
