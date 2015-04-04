@@ -88,6 +88,6 @@ class User(Base):
 
 	def __repr__ ( self ):
 		if self.tutor:			
-			return "<Tutor %s>" % name
-		return "<User %s>" % name
+			return "<Tutor %s>" % self.name
+		return "<User %s>" % self.name
 
