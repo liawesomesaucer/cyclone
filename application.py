@@ -186,6 +186,11 @@ class AllUserHandler(BaseHandler):
 			data = tornado.escape.json_decode(self.request.body)
 			email = data["email"]
 			current_user = session.query(User).filter_by(email=email).first()
+			
+			if not current_use:
+				self.write("0")
+				return
+
 			users = session.query(User).all()
 
 			final_users = []	# users to send

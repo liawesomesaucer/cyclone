@@ -82,7 +82,7 @@ class User(Base):
 		if not other.longitude and not other.latitude:
 			raise
 
-		return sqrt( ( self.longitude + other.longitude ) ^ 2 + ( self.latitude + other.latitude ) ^ 2)
+		return sqrt( ( self.longitude - other.longitude ) ^ 2 + ( self.latitude - other.latitude ) ^ 2)
 
 		# Distance formula = sqrt((x1-x2)^2 + (y1-y2)^2)
 
