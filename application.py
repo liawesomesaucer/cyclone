@@ -140,7 +140,7 @@ class LoginUserHandler(BaseHandler):
 			data = tornado.escape.json_decode(self.request.body)
 			email, password = data["email"], data["password"]
 
-			if not name or not password:
+			if not email or not password:
 				self.write("0")
 				return
 
