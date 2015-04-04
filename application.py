@@ -118,7 +118,7 @@ class CreateUserHandler(BaseHandler):
 				self.write("0")
 				return
 		
-			if data["longitude"] && data["latitude"]:
+			if data["longitude"] and data["latitude"]:
 				longitude = data["longitude"]
 				latitude = data["latitude"]
 				new_user = User (email, password, name, latitude, longitude)
