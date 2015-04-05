@@ -207,7 +207,10 @@ xmlhttp.onreadystatechange=function() {
 		console.log("status = " + xmlhttp.status);
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			reply = JSON.parse(xmlhttp.responseText);
-			$( "#message" ).html(reply);
+			if (reply==1) {
+				$( "#message" ).html("Success! You've been registered.");
+				$( "#form" ).fadeOut(500);
+			}
 		}
 	}
 
