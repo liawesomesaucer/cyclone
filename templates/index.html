@@ -74,7 +74,7 @@
 			<div id="form" style="margin:auto; width:600px; text-align:center;">
 				<!-- <form action="asdf" id="register" style="float:center"> -->
 					<input class="form-opt form-email" style="margin-top:0px;"type="text" name="email" placeholder="email"><br>
-					<input class="form-opt form-password" type="text" name="password" placeholder="password"><br>
+					<input class="form-opt form-password" type="password" text="password" placeholder="password"><br>
 					<input class="form-opt form-name" type="text" name="name" placeholder="name"><br>
 					<p id="message" style="line-height:32px;width:100%">We'll be using your location to find other tutors and students</p>
 					<button class="form-opt form-button" style="width:200px;margin:auto;margin-top:10px" onClick="javascript:getLocation()">Kickstart!</button>
@@ -82,7 +82,6 @@
 			</div>
 
 			<br><br><br>
-
 
 			<div class="footer">
 				<p style="text-align:center;width:100%;line-height:50px">Built with Python-Tornado, Heroku, Android, and Google-Play
@@ -203,32 +202,36 @@ function show_fields() {
 var xmlhttp = new XMLHttpRequest();
 var herokuURL = "https://peaceful-falls-5727.herokuapp.com/create_user";
 
+function submit_data() {
+
+xmlhttp.onreadystatechange=function() {
+	console.log("readyState = " + xmlhttp.readyState);
+	console.log("status = " + xmlhttp.status);
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		process_JSON(xmlhttp.responseText);
+	}
+}
+
+xmlhttp.open("POST", herokuURL, true);
+xmlhttp.send();
+}
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
         alert("Geolocation is not supported by this browser.");
     }
+    submit_data();
 }
 function showPosition(position) {
 
-	
 	window[latitude] = position.coords.latitude;
 	window[longitude] = position.coords.longitude;
-	if ( window[latitude] || window[longitude] ) {
-		$( "#message" ).html("Please enable location usage for this service.").css({"color":"red"});
+	if ( !window[latitude] || !window[longitude] ) {
+		$( "#message" ).html("Please enable location usage for this service.")
+		$( "#message" ).css({"color":"red"});
 	}
 }
 
-// xmlhttp.onreadystatechange=function() {
-// 	console.log("readyState = " + xmlhttp.readyState);
-// 	console.log("status = " + xmlhttp.status);
-// 	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-// 		process_JSON(xmlhttp.responseText);
-// 	}
-// }
-
-// xmlhttp.open("POST", herokuURL, true);
-// xmlhttp.send();
 
 </script>
