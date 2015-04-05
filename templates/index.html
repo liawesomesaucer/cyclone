@@ -233,9 +233,9 @@ function showPosition(position) {
 
 	if ( latitude && longitude ) {
 		// $( "#message" ).html("Longitude: " + String(longitude) + " | Latitude: " + String(latitude));
-		email = document.getElementById( "form-email" ).value();
-		password = document.getElementById( "form-password" ).value();
-		name = document.getElementById( "form-name" ).value();
+		email = document.getElementById( "form-email" ).value;
+		password = document.getElementById( "form-password" ).value;
+		name = document.getElementById( "form-name" ).value;
 		if ( !email || !password || !name) {
 			$( "#message" ).html("All fields are required");
 			$( "#message" ).css({"color":"red"});
