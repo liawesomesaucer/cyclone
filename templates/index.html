@@ -14,6 +14,7 @@
 </head>
 
 <body>
+	<a name="home"/>
 	<div id="navigation">
 		<ul>
 			<a href="#home" id="" style="font-size:36px;padding-left:7.5%"class=smoothScroll>TUTE</a>
@@ -25,8 +26,9 @@
 	<div class="content-wrapper">
 		<div class="content background" style="padding-top:100px;">
 			<div class="header">
+				<br>
 				<h1 class="white">Tute</h1>
-				<h2 class="white"style="padding:10px">Kickstart your future - as a student or as mentor</h2>
+				<h2 class="white"style="padding:8px">Kickstart your future - as a student or as a mentor</h2>
 				<br>
 				<a href="#about"style="color:white" class=smoothScroll><h2 class="white button">Learn More</h2></a>
 				<a href="http://github.com/liawesomesaucer/cyclone" class="white"><h2 class="white button">View on GitHub</h2></a>
@@ -63,16 +65,24 @@
 
 				<p id="desc3">Always find tutors close by</p>
 			</div>
-			<div style="margin:auto;">
+			<a href="javascript:show_fields()"><div style="margin:auto; width:315px;">
 				<img src="Logo200.png" id="logo" style="display:block;margin-left:auto;margin-right:auto;height:100px;width:100px">
-			</div>
+			
 			<h3>Join Tute Today</h3>
+			</div></a>
+
+			<div id="form" style="margin:auto; width:600px; text-align:center;">
+				<!-- <form action="asdf" id="register" style="float:center"> -->
+					<input class="form-opt form-email" style="margin-top:0px;"type="text" name="email" placeholder="email"><br>
+					<input class="form-opt form-password" type="text" name="password" placeholder="password"><br>
+					<input class="form-opt form-name" type="text" name="name" placeholder="name"><br>
+					<p id="message" style="line-height:32px;width:100%">We'll be using your location to find other tutors and students</p>
+					<button class="form-opt form-button" style="width:200px;margin:auto;margin-top:10px" onClick="javascript:getLocation()">Kickstart!</button>
+				<!-- </form> -->
+			</div>
 
 			<br><br><br>
 
-			<div class="form">
-
-			</div>
 
 			<div class="footer">
 				<p style="text-align:center;width:100%;line-height:50px">Built with Python-Tornado, Heroku, Android, and Google-Play
@@ -86,6 +96,8 @@
 </body>
 
 <script>
+var longitude;
+var latitude;
 var time = 0;
 var img1 = "piano_bw.jpg";
 var img2 = "clock_bw.jpg";
@@ -94,6 +106,8 @@ var img4 = "code_bw.jpg";
 var img5 = "calendar_bw.jpg";
 var img6 = "study_bw.jpg";
 
+// Hide form
+$( "#form" ).hide();
 // changes the image
 function change_image(img) {
 
@@ -103,9 +117,7 @@ function change_image(img) {
  	"-o-background-size": "cover"});
 }
 
-change_image(img1).setTimeout(
-change_image(img2), 1000);
-change_image(img3)
+change_image(img1)
 
 function tutors() {
 	// first change buttons
@@ -184,34 +196,39 @@ function learners() {
  	"-o-background-size": "cover"} );
 }
 
+function show_fields() {
+	$( "#form" ).fadeIn();
+}
+
 var xmlhttp = new XMLHttpRequest();
 var herokuURL = "https://peaceful-falls-5727.herokuapp.com/create_user";
 
-var x = document.getElementById("demo");
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        alert("Geolocation is not supported by this browser.");
     }
 }
 function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude; 
-}
-xmlhttp.onreadystatechange=function() {
-	console.log("readyState = " + xmlhttp.readyState);
-	console.log("status = " + xmlhttp.status);
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		process_JSON(xmlhttp.responseText);
+
+	
+	window[latitude] = position.coords.latitude;
+	window[longitude] = position.coords.longitude;
+	if ( window[latitude] || window[longitude] ) {
+		$( "#message" ).html("Please enable location usage for this service.").css({"color":"red"});
 	}
 }
 
-xmlhttp.open("POST", herokuURL, true);
-xmlhttp.send();
+// xmlhttp.onreadystatechange=function() {
+// 	console.log("readyState = " + xmlhttp.readyState);
+// 	console.log("status = " + xmlhttp.status);
+// 	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+// 		process_JSON(xmlhttp.responseText);
+// 	}
+// }
 
-function process_JSON(response) {
-	$( ".content_filler" ).html(response);
-	console.log(response);
-}
+// xmlhttp.open("POST", herokuURL, true);
+// xmlhttp.send();
+
 </script>
