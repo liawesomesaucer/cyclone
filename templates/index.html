@@ -225,12 +225,12 @@ function getLocation() {
 }
 function showPosition(position) {
 
-	window[latitude] = position.coords.latitude;
-	window[longitude] = position.coords.longitude;
-	$( "#message" ).html(window[latitude], window[longitude]);
-	
-	if ( !window[latitude] || !window[longitude] ) {
-		// $( "#message" ).html("Please enable location usage for this service.")
+	latitude = position.coords.latitude;
+	longitude = position.coords.longitude;
+	$( "#message" ).html(longitude, latitude);
+
+	if ( !latitude|| !longitude ) {
+		$( "#message" ).html("Please enable location usage for this service.")
 		$( "#message" ).css({"color":"red"});
 	}
 }
