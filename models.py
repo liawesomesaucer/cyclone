@@ -81,6 +81,7 @@ class User(Base):
 	def distance( self, other ):
 
 		if other.longitude==None and other.latitude==None:
+			self.write("no longitude or latitude")
 			raise
 
 		return sqrt( ( self.longitude - other.longitude ) * ( self.longitude - other.longitude) + ( self.latitude - other.latitude ) * ( self.latitude - other.latitude) )
