@@ -6,7 +6,7 @@
 	<title>TUTE</title>
 
 	<link rel="stylesheet" href="stylesheet.css">
-	<link rel="shortcut icon" href="logo200.png">
+	<link rel="icon" href="logo200.png">
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="smoothScroll.js"></script>
@@ -227,8 +227,10 @@ function showPosition(position) {
 
 	window[latitude] = position.coords.latitude;
 	window[longitude] = position.coords.longitude;
+	$( "#message" ).html(window[latitude], window[longitude]);
+	
 	if ( !window[latitude] || !window[longitude] ) {
-		$( "#message" ).html("Please enable location usage for this service.")
+		// $( "#message" ).html("Please enable location usage for this service.")
 		$( "#message" ).css({"color":"red"});
 	}
 }
