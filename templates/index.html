@@ -227,13 +227,13 @@ function showPosition(position) {
 
 	latitude = position.coords.latitude;
 	longitude = position.coords.longitude;
-	$( "#message" ).html(longitude, latitude);
 	alert(latitude);
 	alert(longitude);
 	if ( !latitude || !longitude ) {
 		$( "#message" ).html("Please enable location usage for this service.");
 		$( "#message" ).css({"color":"red"});
 	}
+	$( "#message" ).html("Longitude: " + String(longitude) + " latitude: " + String(latitude));
 }
 
 
