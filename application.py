@@ -185,6 +185,9 @@ class AllUserHandler(BaseHandler):
 		try:
 			data = tornado.escape.json_decode(self.request.body)
 			email = data["email"]
+			if not email:
+				self.write("0")
+				return
 			current_user = session.query(User).filter_by(email=email).first()
 
 			if not current_user:
