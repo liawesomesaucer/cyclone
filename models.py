@@ -3,6 +3,7 @@ from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime
 from utils import *
 import utils
 import datetime
+from math import sqrt
 
 from sqlalchemy.ext.declarative import declarative_base
 
