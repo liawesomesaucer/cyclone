@@ -86,7 +86,7 @@ a {
 	display:inline-block;
 }
 .box1 {
-background: url(piano_bw.jpg) no-repeat center center;
+background: url(code_bw.jpg) no-repeat center center;
 	-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -124,6 +124,15 @@ background: url(clock_bw.jpg) no-repeat center center;
 .box:hover {
 	-webkit-transform:translate3d(0, -10%, 0);
 	transform:translate3d(0, -10%, 0);
+}
+#logo {
+	transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+#logo:hover {
+	-webkit-transform:translate3d(0, 10%, 0);
+	transform:translate3d(0, 10%, 0);
 }
 #navigation {
 	z-index: 100;
