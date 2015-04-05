@@ -228,9 +228,10 @@ function showPosition(position) {
 	latitude = position.coords.latitude;
 	longitude = position.coords.longitude;
 	$( "#message" ).html(longitude, latitude);
-
-	if ( !latitude|| !longitude ) {
-		$( "#message" ).html("Please enable location usage for this service.")
+	alert(latitude);
+	alert(longitude);
+	if ( !latitude || !longitude ) {
+		$( "#message" ).html("Please enable location usage for this service.");
 		$( "#message" ).css({"color":"red"});
 	}
 }
