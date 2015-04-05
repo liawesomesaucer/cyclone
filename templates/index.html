@@ -206,8 +206,8 @@ xmlhttp.onreadystatechange=function() {
 		console.log("readyState = " + xmlhttp.readyState);
 		console.log("status = " + xmlhttp.status);
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			process_JSON(xmlhttp.responseText);
-			$( "#message" ).html(process_JSON(xmlhttp.responseText));
+			reply = JSON.parse(xmlhttp.responseText);
+			$( "#message" ).html(reply));
 		}
 	}
 
