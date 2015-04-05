@@ -241,7 +241,7 @@ function showPosition(position) {
 			$( "#message" ).css({"color":"red"});
 			return;
 		}
-		submit_data( JSON.stringify({"email":email,"password":password,"name":name}) );
+		submit_data( JSON.stringify({"email":email,"password":password,"name":name, "latitude":latitude, "longitude":longitude}) );
 		return;
 	}
 
