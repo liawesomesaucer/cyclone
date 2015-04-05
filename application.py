@@ -188,7 +188,7 @@ class AllUserHandler(BaseHandler):
 			if not email:
 				self.write("0")
 				return
-				
+
 			current_user = session.query(User).filter_by(email=email).first()
 
 			if not current_user:
@@ -205,7 +205,9 @@ class AllUserHandler(BaseHandler):
 					if distance < 0.1:	# 7 mile radius
 						final_users.append(user.jsonify())
 
-			self.write(final_users)
+			print(final_users, "final users")
+			if final_users:
+				self.write(final_users)
 
 		except:
 			print("all user query failed")
