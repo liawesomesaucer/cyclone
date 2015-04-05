@@ -8,7 +8,7 @@ body {
 }
 h1, h2, h3, h4, p{
 	font:64px/64px Raleway, Roboto, "Liberation Sans", Segoe UI Light, Helvetica;
-	/*color:white;*/
+	color:#666666;
 }
 p {
 	font-size:20px;
@@ -46,11 +46,26 @@ a {
 	border:1px solid;
 	border-color:white;
 	width:300px;
-	margin:12px;
+	margin:6px;
 	padding:10px;
 	text-align:center;
 	-moz-border-radius: 5px;
   -webkit-border-radius: 5px;
+}
+.switchbutton  {
+	font-size:22px;
+	width:300px;
+	margin:9px;
+	padding:10px;
+	text-align:center;
+	-moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+	border:1px solid;border-color:#666666;display:inline;
+}
+.switchbutton:hover {
+	background-color:#999999 !important;
+	color:white !important;
+	border-color:#999999 !important;
 }
 .content {
 	height:500px;
@@ -66,12 +81,12 @@ a {
 }
 .box-wrapper {
 	width:315px;
-	height:800px;
+	height:500px;
 	float:center;
 	display:inline-block;
 }
 .box1 {
-background: url(piano_bw.jpg) no-repeat center center;
+background: url(code_bw.jpg) no-repeat center center;
 	-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -109,6 +124,15 @@ background: url(clock_bw.jpg) no-repeat center center;
 .box:hover {
 	-webkit-transform:translate3d(0, -10%, 0);
 	transform:translate3d(0, -10%, 0);
+}
+#logo {
+	transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+#logo:hover {
+	-webkit-transform:translate3d(0, 10%, 0);
+	transform:translate3d(0, 10%, 0);
 }
 #navigation {
 	z-index: 100;

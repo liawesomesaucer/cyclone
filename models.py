@@ -3,6 +3,7 @@ from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime
 from utils import *
 import utils
 import datetime
+from math import sqrt
 
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -76,6 +77,16 @@ class User(Base):
 		}
 
 		return (obj)
+
+	def distance( self, other ):
+
+		if other.longitude==None and other.latitude==None:
+			self.write("no longitude or latitude")
+			raise
+
+		return sqrt( ( self.longitude - other.longitude ) * ( self.longitude - other.longitude) + ( self.latitude - other.latitude ) * ( self.latitude - other.latitude) )
+
+		# Distance formula = sqrt((x1-x2)^2 + (y1-y2)^2)
 
 class TutoringSession(Base):
 	__tablename__ = 'tutoring_sessions'

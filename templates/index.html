@@ -3,61 +3,79 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Tutor</title>
+	<title>TUTE</title>
 
 	<link rel="stylesheet" href="stylesheet.css">
-	<link rel="shortcut icon" href="static/images/jumpsmash.jpg">
+	<link rel="shortcut icon" href="logo200.png">
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="smoothScroll.js"></script>
+
 </head>
 
 <body>
 	<div id="navigation">
 		<ul>
 			<a href="#home" id="" style="font-size:36px;padding-left:7.5%"class=smoothScroll>TUTE</a>
-			<a href="#menu" id="hrefintro" class=smoothScroll>ABOUT</a>
-			<a href="#about" id="hrefabout" class=smoothScroll>LEARN</a>
-			<a href="#links" id="hreflinks" class=smoothScroll>TUTOR</a>
+			<a href="#about" id="hrefintro" class=smoothScroll>ABOUT</a>
+			<a href="#about" id="hrefabout" onClick="javascript:learners();"class=smoothScroll>LEARN</a>
+			<a href="#about" id="hreflinks" onClick="javascript:tutors();"class=smoothScroll>TUTOR</a>
 		</ul>
 	</div>
 	<div class="content-wrapper">
 		<div class="content background" style="padding-top:100px;">
 			<div class="header">
 				<h1 class="white">Tute</h1>
+				<h2 class="white"style="padding:10px">Kickstart your future - as a student or as mentor</h2>
 				<br>
-				<h2 class="white"style="padding:10px">Guaranteed a++ for your son and daughters.  Watch them grow into doctor lawyer biomed a++.  Coming to theaters soon</h2>
-				<a href="#about" class="white"><h2 class="white button">Learn More</h2></a>
+				<a href="#about"style="color:white" class=smoothScroll><h2 class="white button">Learn More</h2></a>
 				<a href="http://github.com/liawesomesaucer/cyclone" class="white"><h2 class="white button">View on GitHub</h2></a>
 			</div>
 		</div>
-
-		<div class="content">
+		<a name="about"/>
+		<div class="content user">
 			<br>
-			<h3>Learn what you want, when you want it, and where you need it</h3>
+			<h3 id="what">Learn what you want, when you want it, and where you need it</h3>
 
-			<div class="box-wrapper" style="margin-left:50px">
-				<h4>What</h4>
+			<div style="width:100%;margin:auto; text-align:center">
+				<a href="javascript:learners()"><h3 class="switchbutton learners" style="background-color:#666666; color:white; border-color:#666666;">Learners</h3></a>
+				<a href="javascript:tutors()"><h3 class="switchbutton tutors">Tutors</h3></a>
+			</div>
+
+			<div class="box-wrapper wrap1" style="margin-left:50px">
+				<h4 id="box1">What</h4>
 				<div class="box box1">
 				</div>
 
-				<p>Dozens of subjects to choose from</p>
+				<p id="desc1">Dozens of subjects to choose from</p>
 			</div>
-			<div class="box-wrapper">
-				<h4>When</h4>
+			<div class="box-wrapper wrap2">
+				<h4 id="box2">When</h4>
 				<div class="box box2">
 				</div>
 
-				<p>Request a tutor, on demand</p>
+				<p id="desc2">Request a tutor, on demand</p>
 			</div>
-			<div class="box-wrapper">
-				<h4>Where</h4>
+			<div class="box-wrapper wrap3">
+				<h4 id="box3">Where</h4>
 				<div class="box box3">
 				</div>
 
-				<p>Always find tutors nearby</p>
+				<p id="desc3">Always find tutors close by</p>
+			</div>
+			<div style="margin:auto;">
+				<img src="Logo200.png" id="logo" style="display:block;margin-left:auto;margin-right:auto;height:100px;width:100px">
+			</div>
+			<h3>Join Tute Today</h3>
+
+			<br><br><br>
+
+			<div class="form">
+
 			</div>
 
 			<div class="footer">
+				<p style="text-align:center;width:100%;line-height:50px">Built with Python-Tornado, Heroku, Android, and Google-Play
 			</div>
 			</div>
 		</div>
@@ -68,12 +86,132 @@
 </body>
 
 <script>
-var time = 5000;
+var time = 0;
 var img1 = "piano_bw.jpg";
-var img2 = "driving_bw.jpg";
-var img3 = "sunset_bw.jpg"
-	$( ".background" ).css( {"background":"url(piano_bw.jpg)",
+var img2 = "clock_bw.jpg";
+var img3 = "sunset_bw.jpg";
+var img4 = "code_bw.jpg";
+var img5 = "calendar_bw.jpg";
+var img6 = "study_bw.jpg";
+
+// changes the image
+function change_image(img) {
+
+	$( ".background" ).css( {"background":"url("+img+")",
 	"-webkit-background-size": "cover",
   	"-moz-background-size": "cover",
- 	"-o-background-size": "cover",});
+ 	"-o-background-size": "cover"});
+}
+
+change_image(img1).setTimeout(
+change_image(img2), 1000);
+change_image(img3)
+
+function tutors() {
+	// first change buttons
+	$( ".tutors" ).css( {
+		"background-color":"#666666", 
+		"color":"white", 
+		"border-color":"#666666" 
+	});
+	$( ".learners" ).css( {
+		"background-color":"white",
+		"color":"#666666",
+	});
+
+	// then change message
+
+	$( "#what" ).html( "Earn money enlightening others in your free time");
+
+	// then change 3 things
+	$( "#box1" ).html( "$ for skills" );
+	$( "#box2" ).html( "Whenever" );
+	$( "#box3" ).html( "Always Nearby" );
+
+	$( "#desc1" ).html( "Dozens of skills demanded" );
+	$( "#desc2" ).html( "Choose when you're available" );
+	$( "#desc3" ).html( "Never need to go too far" );
+
+	$( ".box1" ).css({"background":"url("+img1+") center center",
+	"-webkit-background-size": "cover",
+  	"-moz-background-size": "cover",
+ 	"-o-background-size": "cover"} );
+ 	$( ".box2" ).css({"background":"url("+img5+") center center",
+	"-webkit-background-size": "cover",
+  	"-moz-background-size": "cover",
+ 	"-o-background-size": "cover"} );
+ 	$( ".box3" ).css({"background":"url("+img6+") center center",
+	"-webkit-background-size": "cover",
+  	"-moz-background-size": "cover",
+ 	"-o-background-size": "cover"} );
+}
+function learners() {
+
+	// first change buttons
+	$( ".learners" ).css( {
+		"background-color":"#666666", 
+		"color":"white", 
+		"border-color":"#666666" 
+	});
+	$( ".tutors" ).css( {
+		"background-color":"white",
+		"color":"#666666",
+	});
+
+	// then change message
+	$( "#what" ).html("Learn what you want, when you want it, and where you need it");
+
+	// then change 3 things
+	$( "#box1" ).html( "What" );
+	$( "#box2" ).html( "When" );
+	$( "#box3" ).html( "Where" );
+
+	$( "#desc1" ).html( "Dozens of subjects to choose from" );
+	$( "#desc2" ).html( "Request a tutor, on demand" );
+	$( "#desc3" ).html( "Always find tutors close by" );
+
+	$( ".box1" ).css({"background":"url("+img4+") center center",
+	"-webkit-background-size": "cover",
+  	"-moz-background-size": "cover",
+ 	"-o-background-size": "cover"} );
+ 	$( ".box2" ).css({"background":"url("+img2+") center center",
+	"-webkit-background-size": "cover",
+  	"-moz-background-size": "cover",
+ 	"-o-background-size": "cover"} );
+ 	$( ".box3" ).css({"background":"url("+img3+") center center",
+	"-webkit-background-size": "cover",
+  	"-moz-background-size": "cover",
+ 	"-o-background-size": "cover"} );
+}
+
+var xmlhttp = new XMLHttpRequest();
+var herokuURL = "https://peaceful-falls-5727.herokuapp.com/create_user";
+
+var x = document.getElementById("demo");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude; 
+}
+xmlhttp.onreadystatechange=function() {
+	console.log("readyState = " + xmlhttp.readyState);
+	console.log("status = " + xmlhttp.status);
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		process_JSON(xmlhttp.responseText);
+	}
+}
+
+xmlhttp.open("POST", herokuURL, true);
+xmlhttp.send();
+
+function process_JSON(response) {
+	$( ".content_filler" ).html(response);
+	console.log(response);
+}
 </script>
